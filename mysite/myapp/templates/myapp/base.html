@@ -11,9 +11,14 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   {% load static %}
   <link rel="stylesheet" type="text/css" href= "{% static 'css/style/style.css' %}"/>
+  <script type="text/javascript" src="{% static '/js/jquery.js' %}"></script>
+  <script type="text/javascript" src="{% static '/js/botones.js' %}"></script>
+
  </head>
 
  <body>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
     <div class="lang_div">
         <h1 class="lang_h1">{% trans "Elige el idioma:" %}</h1>
         <form class="lang_form" action="{% url 'set_language' %}" method="POST">
