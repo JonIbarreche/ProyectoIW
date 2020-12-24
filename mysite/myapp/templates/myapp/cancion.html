@@ -1,0 +1,28 @@
+{% extends 'myapp/base.html' %}
+{% load i18n %}
+{% block title %}Main page{% endblock title %}
+
+{% block logo %} <h1><a href="/">TOP<span class="logo_colour">100</span></a></h1> {% endblock logo %}
+
+{% block logo_text %} <h2>{% trans 'Top 100 canciones' %}</h2> {% endblock logo_text %}
+ 
+{% block site_content %}
+
+        <h1>{{cancion.titulo}}</h1>
+		<b>{% trans 'Popularidad:' %} nº {{cancion.popularidad}}.</b><p></p>
+		<p>
+		<b>{% trans 'Interpretes:' %}</b>
+		
+		{% for n in interpretes %}
+		
+		 <a href="/interprete/{{n.id}}/">{{n.nombre}}.</a>
+		
+		{%endfor%}
+		</p>
+		<b>{% trans 'Fecha:' %} </b> {{cancion.fecha}} <p></p>
+		
+		  <b>  <a href="/"> Estilo: </a> </b> <a href="/estilo/{{estilo.id}}/"> {{cancion.estilo}}.</a><p></p>
+		
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/{{cancion.link}}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		
+{% endblock site_content%}	

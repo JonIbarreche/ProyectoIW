@@ -1,0 +1,27 @@
+{% extends 'myapp/base.html' %}
+{% load i18n %}
+{% block title %}Main page{% endblock title %}
+
+{% block logo %} <h1><a href="/">TOP<span class="logo_colour">100</span></a></h1> {% endblock logo %}
+
+{% block logo_text %} <h2>{% trans 'Top 100 canciones' %}</h2> {% endblock logo_text %}
+ 
+{% block site_content %}
+
+        <h1>{{interprete.nombre}}</h1>
+		<p>{% trans 'DNI:' %} {{interprete.DNI}}</p>
+		<i>{% trans 'Fecha:' %} {{interprete.fecha}}</i> <p></p>
+		<i>{% trans 'Descripcion:' %} {{interprete.descripcion}}</i> <p></p>
+		<p>
+		
+		<b>{% trans 'Canciones: ' %}</b>
+		
+		{% for n in interpretes %}
+		 
+		<b><a href="/cancion/{{n.id}}/">{{n}}.</a></b>
+		
+		
+		{%endfor%}
+		</p>
+		
+{% endblock site_content%}

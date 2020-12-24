@@ -1,0 +1,40 @@
+{% extends 'myapp/base.html' %}
+{% load i18n %}
+
+{% block title %}Main page{% endblock title %}
+
+{% block logo %} <h1><a href="/">TOP<span class="logo_colour">100</span></a></h1> {% endblock logo %}
+
+{% block logo_text %} <h2>{% trans 'Top 100 canciones.' %}</h2> {% endblock logo_text %}
+ 
+{% block site_content %} <h1>{% trans 'Estilos:' %}</h1> 
+
+<ul>
+{% for n in elementos %}
+
+ <li><a href="estilo/{{n.id}}/">{{n.nombre}}: </a>
+	
+  <ul>
+  {% for i in canciones%}
+  
+   {% if i.estilo.nombre == n.nombre %} 
+   
+	{% if  2 >= i.popularidad_estilo %} 
+   
+		<li><a href="cancion/{{i.id}}/"> {{i.titulo}}. </a></li>
+
+	{% endif %}
+   
+   {% endif %}
+
+  {% endfor %}
+
+</ul>
+ </li>
+
+{% endfor %}
+
+</ul>
+
+{% endblock site_content%}		
+ 

@@ -1,0 +1,44 @@
+{% load i18n %}
+<!DOCTYPE html>
+
+<html lang="es">
+
+
+ <head>
+  <title>{% block title %}Top 100{% endblock title%}</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href= "{% static 'css/style/style.css' %}"/>
+ </head>
+
+ <body>
+    <div class="lang_div">
+        <h1 class="lang_h1">{% trans "Elige el idioma:" %}</h1>
+        <form class="lang_form" action="{% url 'set_language' %}" method="POST">
+          {% csrf_token %}
+          <input type="hidden" name="next" value="{{ redirect_to }}">
+          <select name="language" id="">
+            {% get_available_languages as LANGUAGES %}
+            {% get_language_info_list for LANGUAGES as languages %}
+            {% for language in languages %}
+            <option value="{{ language.code }}" {% if language.code == LANGUAJE_CODE %} selected {% endif %} >
+              {{language.name_local}} {{languaje.code}}
+            </option>
+            {% endfor %}
+          </select>
+          <input type="submit" value="Go">
+        </form>
+    </div>
+  <div id="logo">
+   <div id="logo_text">
+    {% block logo %}My page{% endblock logo %}
+	{% block logo_text %}Just a Simple Internet page.{% endblock logo_text%}
+   </div>
+  </div>
+  
+  <div id="site_content">{% block site_content %}  {% endblock site_content%}</div>
+  
+ </body>
+</html>
