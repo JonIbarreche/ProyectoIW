@@ -25,5 +25,5 @@ class Cancion(models.Model):
  popularidad_estilo = models.IntegerField()
  link = models.CharField(max_length=300)
  
- def __str__(self):
+def __str__(self):
   return self.titulo

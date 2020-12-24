@@ -1,10 +1,13 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, request
 from django.views import View
 from django.shortcuts import get_list_or_404, get_object_or_404
 from myapp.models import Estilo
 from myapp.models import Interprete
 from myapp.models import Cancion
+from django.views.generic import ListView
+from django.db.models import Q
+from itertools import chain
 
 def index(request):
  elementos_list = Estilo.objects.all()
@@ -33,3 +36,24 @@ def interprete_detalle(request, id_interprete):
  context = {"interprete" : interprete, "interpretes" : interpretes} 
  
  return render(request, 'myapp/interprete.html', context)
+
+
+class BusquedaCancion(ListView):
+    model = Cancion
+
+    template_name = 'base.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list1 = Cancion.objects.filter(
+            Q(titulo=query) | Q(interprete=query)
+        )
+
+        object_list2 = Interprete.objects.filter(
+            Q(nombre=query) | Q(DNI=query)
+        )
+
+
+        object_list = list(chain(object_list2, object_list1))
+
+        return object_list

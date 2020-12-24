@@ -44,18 +44,11 @@
   </div>
   
   <div id="site_content">
-	<form class="example">
-		<input type="text" id="busqueda" placeholder="Search..">
-		<select id="busquedas" class="select-css">
-			<option value="Todo">Todo</option>
-			<option value="Canciones">Canciones</option>
-			<option value="Interpretes">Interpretes</option>
-			<option value="Estilos">Estilos</option>
-		</select>
-		<button type="submit" id="button1"><i class="fa fa-search"></i></button>
-		
-	</form>
-  
+	<form action="{% url 'busqueda_canciones' %}" method= 'get'>
+      <input type="text" name="q" placeholder="Buscar...">
+      <input type="submit" value="Buscar">
+  </form>
+		  
   <div id="site_content">{% block site_content %}  {% endblock site_content%}</div>
   
  </body>

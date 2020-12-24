@@ -25,5 +25,7 @@ urlpatterns = [
  
  path('interprete/<int:id_interprete>/', views.interprete_detalle, name='interprete_detalle'),
  
- path('cancion/<int:id_cancion>/', views.cancion_detalle, name='cancion_detalle')
+ path('cancion/<int:id_cancion>/', views.cancion_detalle, name='cancion_detalle'),
+
+ path('busqueda/', views.BusquedaCancion.as_view(), name='busqueda_canciones')
 ]
