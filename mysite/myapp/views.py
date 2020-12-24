@@ -41,7 +41,7 @@ def interprete_detalle(request, id_interprete):
 class BusquedaCancion(ListView):
     model = Cancion
 
-    template_name = 'base.html'
+    template_name = 'busqueda.html'
 
     def get_queryset(self):
         query = self.request.GET.get('q')

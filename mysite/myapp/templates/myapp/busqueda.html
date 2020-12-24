@@ -1,0 +1,18 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+
+{% block titulo %}Top 100{% endblock %}
+
+{% block contenido%}
+    <!-- insert the page content here -->
+    {% if lista_busqueda %}
+      {% for p in lista_busqueda %}
+        <p>
+          <h1>{{ p.titulo }}</a></h1>
+          <h5>{{ p.interprete }}</h5>
+          <h5>{{ p.fecha }}</h5>
+          <h4>{{ p.estilo }}</h4>
+        </p>
+      {% endfor %}
+    {% endif %}
+{% endblock %}
