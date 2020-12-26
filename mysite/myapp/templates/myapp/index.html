@@ -9,32 +9,46 @@
  
 {% block site_content %} <h1>{% trans 'Estilos:' %}</h1> 
 
+
 <ul>
-{% for n in elementos %}
+<script type="text/javascript">
+	$(function(){
 
- <li><a href="estilo/{{n.id}}/">{{n.nombre}}: </a>
-	
-  <ul>
-  {% for i in canciones%}
+		// Accordion
+		$("#accordion").accordion({ header: "h3" });
+
+});
+</script>
+
+		<div id="accordion">
+			<div>
+			{% for n in elementos %}
+			<h3><a href="estilo/{{n.id}}/">{{n.nombre}}: </a></h3>
+				<div>
+				{% for i in canciones%}
   
-   {% if i.estilo.nombre == n.nombre %} 
+					{% if i.estilo.nombre == n.nombre %} 
    
-	{% if  2 >= i.popularidad_estilo %} 
+					{% if  2 >= i.popularidad_estilo %} 
+					
+						<div><li><a href="cancion/{{i.id}}/"> {{i.titulo}}. </a></li></div>
+
+					{% endif %}
    
-		<li><a href="cancion/{{i.id}}/"> {{i.titulo}}. </a></li>
+					{% endif %}
 
-	{% endif %}
-   
-   {% endif %}
+				{% endfor %}
+				</div>
+				
+			{% endfor %}	
+			</div>
+		</div>
 
-  {% endfor %}
 
-</ul>
- </li>
 
-{% endfor %}
 
 </ul>
 
 {% endblock site_content%}		
+	
  
