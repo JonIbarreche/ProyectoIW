@@ -19,7 +19,7 @@
 
 });
 </script>
-
+</ul>
 		<div id="accordion">
 			<div>
 			{% for n in elementos %}
@@ -31,7 +31,7 @@
    
 					{% if  2 >= i.popularidad_estilo %} 
 					
-						<div><li><a href="cancion/{{i.id}}/"> {{i.titulo}}. </a></li></div>
+						<div><a href="cancion/{{i.id}}/"> {{i.titulo}}. </a></div>
 
 					{% endif %}
    
@@ -47,7 +47,7 @@
 
 
 
-</ul>
+
 
 {% endblock site_content%}		
 	
